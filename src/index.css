@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-brand-orange: #FF6B35;
+  --color-brand-orange-hover: #E05A2A;
+  --color-brand-secondary: #F4A261;
+  --color-brand-dark: #2D2D2D;
+  --color-brand-card: #FFFFFF;
+  --color-brand-bg: #FFF8F2;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FFF8F2;
+  color: #2D2D2D;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth motion backdrop transition wrapper */
+.smooth-tilt {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.smooth-tilt:hover {
+  transform: translateY(-4px);
+}
+
+/* Prevent auto zoom in iOS/safari/chrome on input fields */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+

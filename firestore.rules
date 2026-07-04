@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global safety net (Default-Deny Catch-All)
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 1. ORDERS
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // 2. NOTIFICATIONS
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+
+    // 3. DELIVERY AREAS
+    match /delivery_areas/{areaId} {
+      allow read, write: if true;
+    }
+
+    // 4. SETTINGS
+    match /settings/{settingsId} {
+      allow read, write: if true;
+    }
+
+    // 5. CATEGORIES
+    match /categories/{categoryId} {
+      allow read, write: if true;
+    }
+
+    // 6. MENU ITEMS
+    match /menu_items/{itemId} {
+      allow read, write: if true;
+    }
+  }
+}

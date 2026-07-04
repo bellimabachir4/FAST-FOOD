@@ -1,0 +1,6 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "database": "ai-studio-remixremixsmilef-a0d856c4-2316-4e79-8ac3-e722789b3e07"
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Stores customer restaurant orders in real-time.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the order"
+        },
+        "orderNumber": {
+          "type": "string",
+          "description": "Sequential or random display order number"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer's name"
+        },
+        "customerPhone": {
+          "type": "string",
+          "description": "Customer's contact phone number"
+        },
+        "deliveryType": {
+          "type": "string",
+          "description": "Type of fulfillment (delivery, pickup, dine_in)"
+        },
+        "tableNumber": {
+          "type": "string",
+          "description": "Table number for dine_in orders"
+        },
+        "deliveryArea": {
+          "type": "string",
+          "description": "Delivery area ID if fulfillment is delivery"
+        },
+        "deliveryFee": {
+          "type": "number",
+          "description": "Standardized delivery fee"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes or requests"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the order (new, preparing, ready, completed, cancelled)"
+        },
+        "total": {
+          "type": "number",
+          "description": "Total checkout price in Algerian Dinars"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp of order creation"
+        },
+        "items": {
+          "type": "array",
+          "description": "List of ordered menu items with quantity and notes"
+        },
+        "restaurantId": {
+          "type": "string",
+          "description": "Restaurant brand identifier filter"
+        }
+      },
+      "required": [
+        "id",
+        "orderNumber",
+        "customerName",
+        "customerPhone",
+        "deliveryType",
+        "status",
+        "total",
+        "createdAt",
+        "items",
+        "restaurantId"
+      ]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Stores admin notifications for newly placed orders.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the notification"
+        },
+        "orderId": {
+          "type": "string",
+          "description": "Associated order identifier"
+        },
+        "orderNumber": {
+          "type": "string",
+          "description": "Display order number of the associated order"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer's name on the order"
+        },
+        "deliveryType": {
+          "type": "string",
+          "description": "Delivery type of the associated order"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp of the notification creation"
+        },
+        "orderStatus": {
+          "type": "string",
+          "description": "Status of the associated order"
+        },
+        "isRead": {
+          "type": "boolean",
+          "description": "Whether the notification has been read by admins"
+        },
+        "restaurantId": {
+          "type": "string",
+          "description": "Restaurant brand identifier filter"
+        }
+      },
+      "required": [
+        "id",
+        "orderId",
+        "orderNumber",
+        "customerName",
+        "deliveryType",
+        "createdAt",
+        "orderStatus",
+        "isRead",
+        "restaurantId"
+      ]
+    },
+    "DeliveryArea": {
+      "title": "DeliveryArea",
+      "description": "Stores delivery areas with their custom fees and status.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the delivery area"
+        },
+        "name": {
+          "type": "string",
+          "description": "Arabic/French display name of the area"
+        },
+        "fee": {
+          "type": "number",
+          "description": "Algerian Dinar delivery fee"
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Whether the area is currently active for orders"
+        },
+        "neighborhoods": {
+          "type": "string",
+          "description": "Comma-separated or text list of neighborhoods included"
+        },
+        "restaurantId": {
+          "type": "string",
+          "description": "Restaurant brand identifier filter"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "fee",
+        "isActive",
+        "neighborhoods",
+        "restaurantId"
+      ]
+    },
+    "Settings": {
+      "title": "Settings",
+      "description": "Stores general restaurant configuration settings.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the settings document (e.g. order_receiving)"
+        },
+        "isReceivingEnabled": {
+          "type": "boolean",
+          "description": "Whether receiving orders is currently active"
+        },
+        "receiveMethod": {
+          "type": "string",
+          "description": "Method of receiving orders (email, whatsapp, both)"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address to receive order notifications"
+        },
+        "whatsapp": {
+          "type": "string",
+          "description": "WhatsApp phone number to receive order notifications"
+        },
+        "restaurantId": {
+          "type": "string",
+          "description": "Restaurant brand identifier filter"
+        }
+      },
+      "required": [
+        "id",
+        "isReceivingEnabled",
+        "receiveMethod",
+        "email",
+        "whatsapp",
+        "restaurantId"
+      ]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Stores the food categories and brands.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the category"
+        },
+        "name": {
+          "type": "string",
+          "description": "English system name of the category"
+        },
+        "arabicName": {
+          "type": "string",
+          "description": "Arabic display name of the category"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Lucide icon name or emoji representational icon"
+        },
+        "image": {
+          "type": "string",
+          "description": "Cover image URL"
+        },
+        "restaurantId": {
+          "type": "string",
+          "description": "Restaurant brand identifier filter"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "arabicName",
+        "icon",
+        "restaurantId"
+      ]
+    },
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "Stores individual food dishes and menu items.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the menu item"
+        },
+        "name": {
+          "type": "string",
+          "description": "English name of the item"
+        },
+        "arabicName": {
+          "type": "string",
+          "description": "Arabic name of the item"
+        },
+        "description": {
+          "type": "string",
+          "description": "English description"
+        },
+        "arabicDescription": {
+          "type": "string",
+          "description": "Arabic description"
+        },
+        "price": {
+          "type": "number",
+          "description": "Price in Algerian Dinars"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category ID of the item"
+        },
+        "image": {
+          "type": "string",
+          "description": "Image URL of the food dish"
+        },
+        "discountPrice": {
+          "type": "number",
+          "description": "Optional special offer discount price"
+        },
+        "rating": {
+          "type": "number",
+          "description": "Calculated average star rating"
+        },
+        "reviews": {
+          "type": "array",
+          "description": "List of customer reviews with scores and comments"
+        },
+        "isAvailable": {
+          "type": "boolean",
+          "description": "Availability flag"
+        },
+        "salesCount": {
+          "type": "number",
+          "description": "Sales count to trace bestseller statistics"
+        },
+        "restaurantId": {
+          "type": "string",
+          "description": "Restaurant brand identifier filter"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "arabicName",
+        "price",
+        "category",
+        "image",
+        "rating",
+        "reviews",
+        "isAvailable",
+        "salesCount",
+        "restaurantId"
+      ]
+    }
+  },
+  "firestore": {
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of orders placed by customers."
+    },
+    "notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "Collection of notifications for restaurant admins."
+    },
+    "delivery_areas/{areaId}": {
+      "schema": "DeliveryArea",
+      "description": "Collection of delivery areas."
+    },
+    "settings/{settingsId}": {
+      "schema": "Settings",
+      "description": "Restaurant configuration and preference settings."
+    },
+    "categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Collection of food categories."
+    },
+    "menu_items/{itemId}": {
+      "schema": "MenuItem",
+      "description": "Collection of individual dishes and menu items."
+    }
+  }
+}

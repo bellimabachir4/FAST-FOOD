@@ -1,0 +1,8 @@
+{
+  "name": "Flavista",
+  "description": "منصة بسيطة وأنيقة لمطعم Flavista لعرض قائمة الطعام واستقبال الطلبات بالدينار الجزائري.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
